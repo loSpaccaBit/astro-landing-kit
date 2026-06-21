@@ -1,0 +1,53 @@
+{
+  "name": "astro-landing-kit",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "A collection of high-converting, accessible landing page templates built with Astro, Tailwind CSS and TypeScript.",
+  "author": "Francesco Nocerino <opensource@lospaccabit.dev>",
+  "license": "MIT",
+  "homepage": "https://lospaccabit.github.io/astro-landing-kit/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loSpaccaBit/astro-landing-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/loSpaccaBit/astro-landing-kit/issues"
+  },
+  "keywords": [
+    "astro",
+    "tailwindcss",
+    "typescript",
+    "landing-page",
+    "templates",
+    "static-site",
+    "seo",
+    "accessibility"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "astro check",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@lucide/astro": "^1.21.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^6.4.7",
+    "tailwindcss": "^4.3.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@types/node": "^26.0.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}

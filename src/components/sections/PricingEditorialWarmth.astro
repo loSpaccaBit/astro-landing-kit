@@ -1,0 +1,47 @@
+---
+import Container from '@/components/layout/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import type { TemplatePricingTier } from '@/types';
+
+interface Props {
+  title: string;
+  tiers: TemplatePricingTier[];
+}
+
+const { title, tiers } = Astro.props;
+---
+
+<section id="pricing" class="border-b border-border py-24 sm:py-32">
+  <Container>
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-medium leading-[1.15] text-foreground sm:text-5xl text-balance">{title}</h2>
+    </div>
+
+    <div class="mt-16 grid gap-px overflow-hidden border border-border bg-border lg:grid-cols-3">
+      {
+        tiers.map((tier, index) => (
+          <div class="bg-background p-8 sm:p-10" style={`animation-delay: ${index * 100}ms;`}>
+            <p class="text-sm uppercase tracking-[0.2em] text-muted-foreground">{tier.name}</p>
+            <div class="mt-4 text-4xl font-medium text-foreground">{tier.price}</div>
+            <p class="mt-2 text-muted-foreground">{tier.description}</p>
+
+            <ul class="mt-8 space-y-3">
+              {
+                tier.features.map((feature) => (
+                  <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                    <span class="text-primary">—</span>
+                    {feature}
+                  </li>
+                ))
+              }
+            </ul>
+
+            <Button href="#" variant={tier.highlighted ? 'primary' : 'outline'} class="mt-8 w-full">
+              {tier.cta}
+            </Button>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

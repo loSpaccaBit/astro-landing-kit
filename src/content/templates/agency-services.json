@@ -1,0 +1,49 @@
+{
+  "title": "Agency & Services",
+  "description": "An editorial, image-forward landing page for creative agencies and studios.",
+  "tagline": "Showcase your work and win more clients.",
+  "category": "agency",
+  "designSystem": "editorial-warmth",
+  "featured": false,
+  "seo": {
+    "title": "Agency Services Landing Page",
+    "description": "A professional agency landing page template with services, portfolio and contact sections."
+  },
+  "hero": {
+    "title": "We craft digital experiences",
+    "subtitle": "Strategy, design and development for brands that want to stand out online.",
+    "primaryCta": { "text": "View our work", "href": "#portfolio" },
+    "secondaryCta": { "text": "Get in touch", "href": "#contact" },
+    "stats": [
+      { "value": "120+", "label": "Projects shipped" },
+      { "value": "15", "label": "Years experience" }
+    ]
+  },
+  "logos": ["Nike", "Apple", "Google", "Spotify", "Airbnb", "Netflix"],
+  "features": [
+    { "title": "Portfolio ready", "description": "Highlight your best projects with image grids and case-study layouts." },
+    { "title": "Services overview", "description": "Clearly present what you offer with dedicated service cards." },
+    { "title": "Team & testimonials", "description": "Build credibility with team profiles and client testimonials." },
+    { "title": "Contact forms", "description": "Pre-styled contact sections ready to wire up to your form backend." }
+  ],
+  "steps": [
+    { "title": "Discover", "description": "We immerse ourselves in your brand, audience and goals." },
+    { "title": "Design", "description": "We craft thoughtful interfaces and visual systems." },
+    { "title": "Deliver", "description": "We build, launch and support your digital product." }
+  ],
+  "testimonials": [
+    { "quote": "Their attention to detail and strategic thinking transformed our entire digital presence.", "author": "Isabella Moore", "role": "CMO", "company": "Bloom & Co" },
+    { "quote": "The team delivered beyond our expectations. The website alone increased inbound leads by 40%.", "author": "Daniel Kim", "role": "Founder", "company": "Northwind" }
+  ],
+  "faq": [
+    { "question": "What services do you offer?", "answer": "We offer brand strategy, UI/UX design, web development and ongoing digital support." },
+    { "question": "How long does a project take?", "answer": "A typical website project takes 6-10 weeks depending on scope and complexity." },
+    { "question": "Do you work with startups?", "answer": "Yes, we partner with startups, scale-ups and established brands across industries." }
+  ],
+  "cta": {
+    "title": "Let's create something remarkable",
+    "subtitle": "Tell us about your project and we'll get back to you within two business days.",
+    "primaryCta": { "text": "Start a project", "href": "#contact" },
+    "secondaryCta": { "text": "Download capabilities", "href": "#" }
+  }
+}

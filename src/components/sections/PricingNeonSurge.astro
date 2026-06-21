@@ -1,0 +1,57 @@
+---
+import Container from '@/components/layout/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import type { TemplatePricingTier } from '@/types';
+
+interface Props {
+  title: string;
+  tiers: TemplatePricingTier[];
+}
+
+const { title, tiers } = Astro.props;
+---
+
+<section id="pricing" class="border-b border-border py-24 sm:py-32">
+  <Container>
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-normal tracking-tight text-foreground sm:text-5xl">{title}</h2>
+    </div>
+
+    <div class="mt-16 grid gap-6 lg:grid-cols-3">
+      {
+        tiers.map((tier, index) => (
+          <div
+            class:list={['rounded-xl border border-border p-8', tier.highlighted && 'bg-primary/10 ring-1 ring-primary']}
+            style={`animation-delay: ${index * 100}ms;`}
+          >
+            {tier.highlighted && (
+              <span class="mb-4 inline-block rounded-full border border-primary/30 px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary">
+                Founder's deal
+              </span>
+            )}
+            <h3 class="text-xl font-medium uppercase tracking-wide text-foreground">{tier.name}</h3>
+            <div class="mt-2 text-5xl font-bold text-primary">{tier.price}</div>
+            <p class="mt-2 text-sm text-muted-foreground">{tier.description}</p>
+
+            <ul class="mt-6 space-y-3">
+              {
+                tier.features.map((feature) => (
+                  <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                    <svg class="mt-0.5 h-4 w-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))
+              }
+            </ul>
+
+            <Button href="#" variant={tier.highlighted ? 'primary' : 'outline'} class="mt-8 w-full">
+              {tier.cta}
+            </Button>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

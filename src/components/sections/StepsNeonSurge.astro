@@ -1,0 +1,35 @@
+---
+import Container from '@/components/layout/Container.astro';
+import type { TemplateStep } from '@/types';
+
+interface Props {
+  title: string;
+  steps: TemplateStep[];
+}
+
+const { title, steps } = Astro.props;
+---
+
+<section class="border-b border-border py-24 sm:py-32">
+  <Container>
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-normal tracking-tight text-foreground sm:text-5xl">{title}</h2>
+    </div>
+
+    <div class="mt-16 space-y-6">
+      {
+        steps.map((step, index) => (
+          <div class="flex animate-fade-up gap-6 rounded-xl border border-border bg-muted p-6 sm:p-8" style={`animation-delay: ${index * 100}ms;`}>
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-lg font-bold text-primary">
+              {String(index + 1).padStart(2, '0')}
+            </div>
+            <div>
+              <h3 class="text-xl font-medium uppercase tracking-wide text-foreground">{step.title}</h3>
+              <p class="mt-2 text-muted-foreground">{step.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

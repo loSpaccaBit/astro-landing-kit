@@ -1,0 +1,72 @@
+---
+import Container from '@/components/layout/Container.astro';
+import Button from '@/components/ui/Button.astro';
+
+import type { TemplateStat } from '@/types';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  primaryCta?: { text: string; href: string };
+  secondaryCta?: { text: string; href: string };
+  stats?: TemplateStat[];
+}
+
+const { title, subtitle, primaryCta, secondaryCta, stats = [] } = Astro.props;
+
+const countdown = [
+  { value: '12', label: 'Days' },
+  { value: '08', label: 'Hours' },
+  { value: '42', label: 'Minutes' },
+];
+
+const displayStats = stats.length > 0 ? stats : countdown;
+
+const statCount = displayStats.length;
+const gridCols = statCount === 1 ? 'grid-cols-1' : statCount === 2 ? 'grid-cols-2' : 'grid-cols-3';
+const maxWidth = statCount === 1 ? 'max-w-xs' : statCount === 2 ? 'max-w-md' : 'max-w-2xl';
+---
+
+<section class="relative flex min-h-[90vh] items-center justify-center overflow-hidden border-b border-border py-24">
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,var(--primary)_0%,transparent_50%)] opacity-10"></div>
+    <div class="absolute left-0 top-0 h-full w-1/2 bg-[linear-gradient(90deg,var(--primary)_0%,transparent_100%)] opacity-5"></div>
+    <div class="absolute right-0 top-0 h-full w-1/2 bg-[linear-gradient(270deg,var(--accent)_0%,transparent_100%)] opacity-5"></div>
+  </div>
+
+  <Container class="relative z-10 text-center">
+    <div class="animate-fade-up">
+      <p class="mb-6 inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium tracking-wide text-primary uppercase">
+        Coming soon
+      </p>
+      <h1 class="mx-auto max-w-5xl text-5xl font-normal leading-[0.95] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl text-balance">
+        {title}
+      </h1>
+      <p class="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground sm:text-xl text-balance">
+        {subtitle}
+      </p>
+    </div>
+
+    {
+      (primaryCta || secondaryCta) && (
+        <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up" style="animation-delay: 150ms;">
+          {primaryCta && <Button href={primaryCta.href} size="lg" class="animate-glow">{primaryCta.text}</Button>}
+          {secondaryCta && (
+            <Button href={secondaryCta.href} variant="outline" size="lg">
+              {secondaryCta.text}
+            </Button>
+          )}
+        </div>
+      )
+    }
+
+    <div class={`mt-16 grid ${gridCols} gap-4 sm:gap-6 ${maxWidth} mx-auto animate-fade-up`} style="animation-delay: 300ms;">
+      {displayStats.map((item) => (
+        <div class="rounded-xl border border-border bg-muted p-4 sm:p-6">
+          <div class="text-3xl font-bold text-primary sm:text-5xl">{item.value}</div>
+          <div class="mt-1 text-xs uppercase tracking-widest text-muted-foreground sm:text-sm">{item.label}</div>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

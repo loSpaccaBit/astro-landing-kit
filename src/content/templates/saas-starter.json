@@ -1,0 +1,78 @@
+{
+  "title": "SaaS Starter",
+  "description": "A clean, precision-crafted landing page for modern SaaS products.",
+  "tagline": "Launch your SaaS with a high-converting landing page.",
+  "category": "saas",
+  "designSystem": "kinetic-slate",
+  "featured": true,
+  "seo": {
+    "title": "SaaS Starter Landing Page",
+    "description": "A production-ready SaaS landing page template built with Astro, Tailwind CSS and TypeScript."
+  },
+  "hero": {
+    "title": "Build better software, faster",
+    "subtitle": "The all-in-one platform that helps teams ship features with confidence. No setup required.",
+    "primaryCta": { "text": "Get started free", "href": "#pricing" },
+    "secondaryCta": { "text": "View demo", "href": "#features" },
+    "stats": [
+      { "value": "10k+", "label": "Active teams" },
+      { "value": "99.9%", "label": "Uptime SLA" },
+      { "value": "4.9/5", "label": "User rating" }
+    ]
+  },
+  "logos": ["Vercel", "Stripe", "Notion", "Linear", "Figma", "Shopify"],
+  "features": [
+    { "title": "Lightning fast", "description": "Static generation and zero JS by default for exceptional Core Web Vitals." },
+    { "title": "Fully responsive", "description": "Looks great on every device, from mobile to ultra-wide desktop screens." },
+    { "title": "SEO optimized", "description": "Built-in sitemap, Open Graph, JSON-LD and semantic HTML out of the box." },
+    { "title": "Accessible", "description": "WCAG 2.2 AA compliant with keyboard navigation and screen-reader support." },
+    { "title": "TypeScript", "description": "Strictly typed components and content schemas for a maintainable codebase." },
+    { "title": "Easy to customize", "description": "Tailwind CSS design tokens and reusable sections make branding simple." }
+  ],
+  "steps": [
+    { "title": "Connect your data", "description": "Import from your existing tools in minutes with our native integrations." },
+    { "title": "Automate workflows", "description": "Build repeatable processes with a visual, no-code workflow builder." },
+    { "title": "Ship with confidence", "description": "Monitor performance, collaborate with your team and iterate faster." }
+  ],
+  "testimonials": [
+    { "quote": "This platform cut our release cycle in half. The ROI was visible within the first month.", "author": "Sarah Chen", "role": "Engineering Lead", "company": "Vercel" },
+    { "quote": "Finally a tool that our designers and developers can actually agree on.", "author": "Marcus Johnson", "role": "Product Manager", "company": "Linear" },
+    { "quote": "The analytics alone saved us countless hours of manual reporting.", "author": "Elena Rossi", "role": "Head of Growth", "company": "Stripe" }
+  ],
+  "pricing": [
+    {
+      "name": "Starter",
+      "price": "$0",
+      "description": "Perfect for side projects and small teams.",
+      "features": ["Up to 3 projects", "1,000 events/month", "Community support", "Basic analytics"],
+      "cta": "Get started free"
+    },
+    {
+      "name": "Pro",
+      "price": "$29",
+      "description": "For growing teams that need more power.",
+      "features": ["Unlimited projects", "50,000 events/month", "Priority support", "Advanced analytics", "SSO ready"],
+      "cta": "Start free trial",
+      "highlighted": true
+    },
+    {
+      "name": "Enterprise",
+      "price": "Custom",
+      "description": "Dedicated infrastructure and support.",
+      "features": ["Unlimited everything", "Custom contracts", "Dedicated success manager", "SLA guarantees", "On-premise option"],
+      "cta": "Contact sales"
+    }
+  ],
+  "faq": [
+    { "question": "Is there a free trial?", "answer": "Yes, every paid plan starts with a 14-day free trial. No credit card required." },
+    { "question": "Can I change plans later?", "answer": "Absolutely. You can upgrade, downgrade or cancel at any time from your billing settings." },
+    { "question": "Do you offer refunds?", "answer": "We offer a 30-day money-back guarantee if you're not satisfied with the product." },
+    { "question": "Is my data secure?", "answer": "All data is encrypted at rest and in transit. We are SOC 2 Type II compliant." }
+  ],
+  "cta": {
+    "title": "Ready to ship faster?",
+    "subtitle": "Join thousands of teams already building better products with our platform.",
+    "primaryCta": { "text": "Get started free", "href": "#pricing" },
+    "secondaryCta": { "text": "Talk to sales", "href": "#" }
+  }
+}

@@ -1,0 +1,17 @@
+---
+import Container from './Container.astro';
+---
+
+<footer class="border-t border-border py-12">
+  <Container class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+    <p class="text-sm text-muted-foreground">
+      © {new Date().getFullYear()} Astro Landing Kit. MIT License.
+    </p>
+    <nav aria-label="Footer navigation">
+      <ul class="flex items-center gap-6 text-sm text-muted-foreground">
+        <li><a href="/" class="hover:text-foreground transition-colors">Templates</a></li>
+        <li><a href="https://github.com/loSpaccaBit/astro-landing-kit" class="hover:text-foreground transition-colors">GitHub</a></li>
+      </ul>
+    </nav>
+  </Container>
+</footer>

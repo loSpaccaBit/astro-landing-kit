@@ -1,0 +1,25 @@
+---
+import Container from '@/components/layout/Container.astro';
+import type { TemplateStat } from '@/types';
+
+interface Props {
+  stats: TemplateStat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="border-b border-border py-14">
+  <Container>
+    <div class="flex flex-wrap items-center justify-center gap-12">
+      {
+        stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-4xl font-bold text-primary sm:text-5xl">{stat.value}</div>
+            <div class="mt-1 text-xs font-bold uppercase tracking-widest text-muted-foreground">{stat.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

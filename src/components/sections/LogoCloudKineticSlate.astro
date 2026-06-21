@@ -1,0 +1,26 @@
+---
+import Container from '@/components/layout/Container.astro';
+
+interface Props {
+  logos: string[];
+}
+
+const { logos } = Astro.props;
+---
+
+<section class="border-b border-border py-12">
+  <Container>
+    <p class="mb-8 text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">
+      Trusted by fast-moving teams
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-12">
+      {
+        logos.map((logo) => (
+          <div class="text-lg font-semibold text-muted-foreground transition-colors hover:text-foreground">
+            {logo}
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

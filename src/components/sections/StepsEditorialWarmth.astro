@@ -1,0 +1,37 @@
+---
+import Container from '@/components/layout/Container.astro';
+import type { TemplateStep } from '@/types';
+
+interface Props {
+  title: string;
+  steps: TemplateStep[];
+}
+
+const { title, steps } = Astro.props;
+---
+
+<section class="border-b border-border py-24 sm:py-32">
+  <Container>
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <h2 class="text-4xl font-medium leading-[1.15] text-foreground sm:text-5xl text-balance">{title}</h2>
+      </div>
+
+      <div class="space-y-12">
+        {
+          steps.map((step, index) => (
+            <div class="group flex gap-8 animate-fade-up" style={`animation-delay: ${index * 100}ms;`}>
+              <div class="text-5xl font-light leading-none text-muted-foreground group-hover:text-primary transition-colors">
+                {String(index + 1).padStart(2, '0')}
+              </div>
+              <div>
+                <h3 class="text-2xl font-medium text-foreground">{step.title}</h3>
+                <p class="mt-2 max-w-sm leading-relaxed text-muted-foreground">{step.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>

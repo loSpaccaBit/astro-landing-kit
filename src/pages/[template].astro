@@ -1,0 +1,162 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+
+import HeroKineticSlate from '@/components/sections/HeroKineticSlate.astro';
+import HeroNeonSurge from '@/components/sections/HeroNeonSurge.astro';
+import HeroEditorialWarmth from '@/components/sections/HeroEditorialWarmth.astro';
+
+import LogoCloudKineticSlate from '@/components/sections/LogoCloudKineticSlate.astro';
+import LogoCloudNeonSurge from '@/components/sections/LogoCloudNeonSurge.astro';
+import LogoCloudEditorialWarmth from '@/components/sections/LogoCloudEditorialWarmth.astro';
+
+import StatsKineticSlate from '@/components/sections/StatsKineticSlate.astro';
+import StatsNeonSurge from '@/components/sections/StatsNeonSurge.astro';
+import StatsEditorialWarmth from '@/components/sections/StatsEditorialWarmth.astro';
+
+import FeaturesKineticSlate from '@/components/sections/FeaturesKineticSlate.astro';
+import FeaturesNeonSurge from '@/components/sections/FeaturesNeonSurge.astro';
+import FeaturesEditorialWarmth from '@/components/sections/FeaturesEditorialWarmth.astro';
+
+import StepsKineticSlate from '@/components/sections/StepsKineticSlate.astro';
+import StepsNeonSurge from '@/components/sections/StepsNeonSurge.astro';
+import StepsEditorialWarmth from '@/components/sections/StepsEditorialWarmth.astro';
+
+import TestimonialsKineticSlate from '@/components/sections/TestimonialsKineticSlate.astro';
+import TestimonialsNeonSurge from '@/components/sections/TestimonialsNeonSurge.astro';
+import TestimonialsEditorialWarmth from '@/components/sections/TestimonialsEditorialWarmth.astro';
+
+import PricingKineticSlate from '@/components/sections/PricingKineticSlate.astro';
+import PricingNeonSurge from '@/components/sections/PricingNeonSurge.astro';
+import PricingEditorialWarmth from '@/components/sections/PricingEditorialWarmth.astro';
+
+import FAQKineticSlate from '@/components/sections/FAQKineticSlate.astro';
+import FAQNeonSurge from '@/components/sections/FAQNeonSurge.astro';
+import FAQEditorialWarmth from '@/components/sections/FAQEditorialWarmth.astro';
+
+import CTABannerKineticSlate from '@/components/sections/CTABannerKineticSlate.astro';
+import CTABannerNeonSurge from '@/components/sections/CTABannerNeonSurge.astro';
+import CTABannerEditorialWarmth from '@/components/sections/CTABannerEditorialWarmth.astro';
+
+import PortfolioEditorialWarmth from '@/components/sections/PortfolioEditorialWarmth.astro';
+
+import { createPageMeta } from '@/utils/seo';
+import type { DesignSystem } from '@/types';
+
+export async function getStaticPaths() {
+  const templates = await getCollection('templates');
+  return templates.map((template) => ({
+    params: { template: template.id },
+    props: { template },
+  }));
+}
+
+const { template } = Astro.props;
+const { data } = template;
+const designSystem: DesignSystem = data.designSystem;
+
+const meta = createPageMeta({
+  title: data.seo.title,
+  description: data.seo.description,
+});
+
+const heroComponents: Record<DesignSystem, typeof HeroKineticSlate> = {
+  'kinetic-slate': HeroKineticSlate,
+  'neon-surge': HeroNeonSurge,
+  'editorial-warmth': HeroEditorialWarmth,
+};
+
+const logoCloudComponents: Record<DesignSystem, typeof LogoCloudKineticSlate> = {
+  'kinetic-slate': LogoCloudKineticSlate,
+  'neon-surge': LogoCloudNeonSurge,
+  'editorial-warmth': LogoCloudEditorialWarmth,
+};
+
+const statsComponents: Record<DesignSystem, typeof StatsKineticSlate> = {
+  'kinetic-slate': StatsKineticSlate,
+  'neon-surge': StatsNeonSurge,
+  'editorial-warmth': StatsEditorialWarmth,
+};
+
+const featuresComponents: Record<DesignSystem, typeof FeaturesKineticSlate> = {
+  'kinetic-slate': FeaturesKineticSlate,
+  'neon-surge': FeaturesNeonSurge,
+  'editorial-warmth': FeaturesEditorialWarmth,
+};
+
+const stepsComponents: Record<DesignSystem, typeof StepsKineticSlate> = {
+  'kinetic-slate': StepsKineticSlate,
+  'neon-surge': StepsNeonSurge,
+  'editorial-warmth': StepsEditorialWarmth,
+};
+
+const testimonialsComponents: Record<DesignSystem, typeof TestimonialsKineticSlate> = {
+  'kinetic-slate': TestimonialsKineticSlate,
+  'neon-surge': TestimonialsNeonSurge,
+  'editorial-warmth': TestimonialsEditorialWarmth,
+};
+
+const pricingComponents: Record<DesignSystem, typeof PricingKineticSlate> = {
+  'kinetic-slate': PricingKineticSlate,
+  'neon-surge': PricingNeonSurge,
+  'editorial-warmth': PricingEditorialWarmth,
+};
+
+const faqComponents: Record<DesignSystem, typeof FAQKineticSlate> = {
+  'kinetic-slate': FAQKineticSlate,
+  'neon-surge': FAQNeonSurge,
+  'editorial-warmth': FAQEditorialWarmth,
+};
+
+const ctaComponents: Record<DesignSystem, typeof CTABannerKineticSlate> = {
+  'kinetic-slate': CTABannerKineticSlate,
+  'neon-surge': CTABannerNeonSurge,
+  'editorial-warmth': CTABannerEditorialWarmth,
+};
+
+const Hero = heroComponents[designSystem];
+const LogoCloud = logoCloudComponents[designSystem];
+const Stats = statsComponents[designSystem];
+const Features = featuresComponents[designSystem];
+const Steps = stepsComponents[designSystem];
+const Testimonials = testimonialsComponents[designSystem];
+const Pricing = pricingComponents[designSystem];
+const FAQ = faqComponents[designSystem];
+const CTABanner = ctaComponents[designSystem];
+---
+
+<Layout meta={meta} designSystem={designSystem}>
+  <Hero
+    title={data.hero.title}
+    subtitle={data.hero.subtitle}
+    primaryCta={data.hero.primaryCta}
+    secondaryCta={data.hero.secondaryCta}
+    stats={data.hero.stats}
+  />
+
+  {data.logos.length > 0 && <LogoCloud logos={data.logos} />}
+
+  {
+    data.hero.stats.length > 0 && !['kinetic-slate', 'neon-surge', 'editorial-warmth'].includes(designSystem) && (
+      <Stats stats={data.hero.stats} />
+    )
+  }
+
+  {data.features.length > 0 && <Features title="Everything you need" features={data.features} />}
+
+  {data.steps.length > 0 && <Steps title={designSystem === 'editorial-warmth' ? 'Our process' : 'How it works'} steps={data.steps} />}
+
+  {data.testimonials.length > 0 && <Testimonials title="What people say" testimonials={data.testimonials} />}
+
+  {data.pricing.length > 0 && <Pricing title="Simple, transparent pricing" tiers={data.pricing} />}
+
+  {data.faq.length > 0 && <FAQ title="Frequently asked questions" faq={data.faq} />}
+
+  {data.cta && <CTABanner cta={data.cta} />}
+
+  {
+    designSystem === 'editorial-warmth' && (
+      <PortfolioEditorialWarmth title="Selected work" />
+    )
+  }
+</Layout>

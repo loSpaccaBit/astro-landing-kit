@@ -1,0 +1,35 @@
+---
+import Container from '@/components/layout/Container.astro';
+import type { TemplateFaq } from '@/types';
+
+interface Props {
+  title: string;
+  faq: TemplateFaq[];
+}
+
+const { title, faq } = Astro.props;
+---
+
+<section class="border-b border-border py-24 sm:py-32">
+  <Container class="max-w-3xl">
+    <div class="text-center">
+      <h2 class="text-3xl font-normal tracking-tight text-foreground sm:text-5xl">{title}</h2>
+    </div>
+
+    <div class="mt-16 divide-y divide-border border-t border-border">
+      {
+        faq.map((item, index) => (
+          <details class="group py-6 animate-fade-up" style={`animation-delay: ${index * 50}ms;`}>
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left text-lg font-medium uppercase tracking-wide text-foreground">
+              {item.question}
+              <svg class="ml-4 h-5 w-5 shrink-0 text-primary transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </summary>
+            <p class="mt-4 max-w-2xl text-muted-foreground">{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </Container>
+</section>

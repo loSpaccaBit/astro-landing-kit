@@ -1,0 +1,96 @@
+---
+import '@/styles/global.css';
+import { siteConfig, formatTitle, jsonLdScript } from '@/utils/seo';
+import type { PageMeta, DesignSystem } from '@/types';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+
+interface Props {
+  meta: PageMeta;
+  showHeader?: boolean;
+  showFooter?: boolean;
+  designSystem?: DesignSystem;
+}
+
+const { meta, showHeader = true, showFooter = true, designSystem = 'kinetic-slate' } = Astro.props;
+
+const title = formatTitle(meta.title);
+const canonicalUrl = meta.canonical ?? new URL(Astro.url.pathname, siteConfig.url).toString();
+const ogImage = new URL(meta.image ?? siteConfig.defaultImage, siteConfig.url).toString();
+
+const websiteJsonLd = jsonLdScript({
+  '@type': 'WebSite',
+  name: siteConfig.name,
+  url: siteConfig.url,
+  description: siteConfig.tagline,
+});
+
+const webPageJsonLd = jsonLdScript({
+  '@type': 'WebPage',
+  name: title,
+  description: meta.description,
+  url: canonicalUrl,
+});
+
+const fontFamilies: Record<DesignSystem, string> = {
+  'kinetic-slate': 'family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700',
+  'neon-surge': 'family=Anton&family=Sora:wght@400;500;600;700',
+  'editorial-warmth': 'family=Syne:wght@400;500;600;700&family=Manrope:wght@400;500;600;700',
+};
+
+const themeColors: Record<DesignSystem, string> = {
+  'kinetic-slate': '#4f46e5',
+  'neon-surge': '#0a0a0a',
+  'editorial-warmth': '#c2410c',
+};
+
+const googleFontUrl = `https://fonts.googleapis.com/css2?${fontFamilies[designSystem]}&display=swap`;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth" data-theme={designSystem}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={meta.description} />
+    <meta name="theme-color" content={themeColors[designSystem]} />
+
+    {meta.noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={googleFontUrl} />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:type" content={meta.type ?? 'website'} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={meta.imageAlt ?? title} />
+    <meta property="og:site_name" content={siteConfig.name} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={siteConfig.twitterHandle} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={meta.imageAlt ?? title} />
+
+    <script is:inline type="application/ld+json" set:html={websiteJsonLd} />
+    <script is:inline type="application/ld+json" set:html={webPageJsonLd} />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-background text-foreground antialiased">
+    {showHeader && <Header />}
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    {showFooter && <Footer />}
+  </body>
+</html>

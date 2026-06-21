@@ -1,0 +1,40 @@
+---
+import Container from '@/components/layout/Container.astro';
+import type { TemplateTestimonial } from '@/types';
+
+interface Props {
+  title: string;
+  testimonials: TemplateTestimonial[];
+}
+
+const { title, testimonials } = Astro.props;
+---
+
+<section class="border-b border-border py-24 sm:py-32">
+  <Container>
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-normal tracking-tight text-foreground sm:text-5xl">{title}</h2>
+    </div>
+
+    <div class="mt-16 grid gap-6 sm:grid-cols-2">
+      {
+        testimonials.map((testimonial, index) => (
+          <div class="animate-fade-up rounded-xl border border-primary/20 bg-primary/5 p-8" style={`animation-delay: ${index * 100}ms;`}>
+            <p class="text-lg font-medium text-foreground">"{testimonial.quote}"</p>
+            <div class="mt-6 flex items-center gap-4">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                {testimonial.author.charAt(0)}
+              </div>
+              <div>
+                <p class="font-bold uppercase tracking-wide text-foreground">{testimonial.author}</p>
+                <p class="text-sm text-muted-foreground">
+                  {testimonial.role}{testimonial.company && ` · ${testimonial.company}`}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

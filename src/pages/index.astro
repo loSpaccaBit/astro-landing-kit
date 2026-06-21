@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import Container from '@/components/layout/Container.astro';
+import HeroKineticSlate from '@/components/sections/HeroKineticSlate.astro';
+import Card from '@/components/ui/Card.astro';
+import Badge from '@/components/ui/Badge.astro';
+import { createPageMeta } from '@/utils/seo';
+
+const templates = await getCollection('templates');
+
+const meta = createPageMeta({
+  title: 'Astro Landing Kit',
+  description: 'A collection of high-converting, accessible landing page templates built with Astro, Tailwind CSS and TypeScript.',
+});
+
+const designSystemLabels: Record<string, string> = {
+  'kinetic-slate': 'SaaS / Tech',
+  'neon-surge': 'Launch / Hype',
+  'editorial-warmth': 'Agency / Editorial',
+};
+---
+
+<Layout meta={meta}>
+  <HeroKineticSlate
+    title="Landing page templates that convert"
+    subtitle="A curated collection of fast, accessible and SEO-friendly landing page templates, each with its own distinct design system."
+    primaryCta={{ text: 'Browse templates', href: '#templates' }}
+    secondaryCta={{ text: 'View on GitHub', href: 'https://github.com/loSpaccaBit/astro-landing-kit' }}
+  />
+
+  <section id="templates" class="py-24 sm:py-32">
+    <Container>
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Choose a template</h2>
+        <p class="mt-4 text-lg text-muted-foreground">
+          Each template is optimized for Core Web Vitals, accessibility and SEO — and has a unique visual identity.
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          templates.map((template) => (
+            <Card href={`/${template.id}`} class="flex flex-col">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
+                  {template.data.title}
+                </h3>
+                {template.data.featured && <Badge>Featured</Badge>}
+              </div>
+              <p class="mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                {designSystemLabels[template.data.designSystem]}
+              </p>
+              <p class="mt-3 flex-1 text-muted-foreground">{template.data.description}</p>
+              <span class="mt-6 inline-flex items-center text-sm font-medium text-accent">
+                Preview template
+                <svg class="ml-1 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
+            </Card>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+</Layout>

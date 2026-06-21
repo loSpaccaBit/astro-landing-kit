@@ -1,0 +1,49 @@
+{
+  "title": "Product Launch",
+  "description": "Generate buzz and capture early-access signups with bold, high-energy design.",
+  "tagline": "Build anticipation before launch day.",
+  "category": "product",
+  "designSystem": "neon-surge",
+  "featured": true,
+  "seo": {
+    "title": "Product Launch Landing Page",
+    "description": "An early-access landing page template designed to capture leads and build excitement."
+  },
+  "hero": {
+    "title": "SOMETHING BIG IS COMING",
+    "subtitle": "Join the waitlist and be the first to experience the next generation of productivity.",
+    "primaryCta": { "text": "Join waitlist", "href": "#waitlist" },
+    "secondaryCta": { "text": "Learn more", "href": "#features" },
+    "stats": [
+      { "value": "2,400+", "label": "Waitlist spots" },
+      { "value": "48", "label": "Hours left" }
+    ]
+  },
+  "logos": ["Product Hunt", "TechCrunch", "The Verge", "Wired", "Fast Company"],
+  "features": [
+    { "title": "Waitlist ready", "description": "Prominent signup sections designed to maximize early-adopter conversion." },
+    { "title": "Social proof", "description": "Built-in testimonial and logo-cloud sections to build trust quickly." },
+    { "title": "Launch countdown", "description": "Easily add a countdown timer component to create urgency." },
+    { "title": "Shareable", "description": "Optimized Open Graph tags make every social share look professional." }
+  ],
+  "steps": [
+    { "title": "Join the waitlist", "description": "Reserve your spot and get notified the moment we go live." },
+    { "title": "Early access", "description": "Get exclusive access to features before the public launch." },
+    { "title": "Founder pricing", "description": "Lock in lifetime discounts available only to waitlist members." }
+  ],
+  "testimonials": [
+    { "quote": "I've been waiting for a tool like this. The early preview blew me away.", "author": "Alex Rivera", "role": "Indie Hacker", "company": "BuildFast" },
+    { "quote": "This is exactly what the market needs right now. Count me in.", "author": "Priya Patel", "role": "Startup Advisor", "company": "SeedCamp" }
+  ],
+  "faq": [
+    { "question": "When is the official launch?", "answer": "We're targeting a public launch in the next few weeks. Waitlist members get access first." },
+    { "question": "Is there a cost to join the waitlist?", "answer": "No, joining the waitlist is completely free and comes with exclusive founder perks." },
+    { "question": "What happens after I sign up?", "answer": "You'll receive a confirmation email and early access instructions as soon as we open the doors." }
+  ],
+  "cta": {
+    "title": "Don't miss the launch",
+    "subtitle": "Join the waitlist today and get early access plus exclusive founder pricing.",
+    "primaryCta": { "text": "Join waitlist", "href": "#waitlist" },
+    "secondaryCta": { "text": "Follow on Twitter", "href": "#" }
+  }
+}

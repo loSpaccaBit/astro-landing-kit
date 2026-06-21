@@ -1,0 +1,28 @@
+---
+import Container from '@/components/layout/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import type { TemplateCta } from '@/types';
+
+interface Props {
+  cta: TemplateCta;
+}
+
+const { cta } = Astro.props;
+---
+
+<section class="border-b border-border py-24 sm:py-32">
+  <Container>
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <h2 class="text-4xl font-medium leading-[1.15] text-foreground sm:text-5xl text-balance">{cta.title}</h2>
+      </div>
+      <div>
+        <p class="text-lg leading-relaxed text-muted-foreground">{cta.subtitle}</p>
+        <div class="mt-8 flex flex-col items-start gap-4 sm:flex-row">
+          {cta.primaryCta && <Button href={cta.primaryCta.href} size="lg">{cta.primaryCta.text}</Button>}
+          {cta.secondaryCta && <Button href={cta.secondaryCta.href} variant="ghost" size="lg">{cta.secondaryCta.text}</Button>}
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

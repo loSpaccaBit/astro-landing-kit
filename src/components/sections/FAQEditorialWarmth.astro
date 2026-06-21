@@ -1,0 +1,32 @@
+---
+import Container from '@/components/layout/Container.astro';
+import type { TemplateFaq } from '@/types';
+
+interface Props {
+  title: string;
+  faq: TemplateFaq[];
+}
+
+const { title, faq } = Astro.props;
+---
+
+<section class="border-b border-border py-24 sm:py-32">
+  <Container>
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <h2 class="text-4xl font-medium leading-[1.15] text-foreground sm:text-5xl text-balance">{title}</h2>
+      </div>
+
+      <div class="space-y-8">
+        {
+          faq.map((item, index) => (
+            <div class="animate-fade-up" style={`animation-delay: ${index * 50}ms;`}>
+              <h3 class="text-lg font-medium text-foreground">{item.question}</h3>
+              <p class="mt-2 leading-relaxed text-muted-foreground">{item.answer}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>

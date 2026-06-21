@@ -1,0 +1,39 @@
+---
+import Container from '@/components/layout/Container.astro';
+import type { TemplateFeature } from '@/types';
+
+interface Props {
+  title: string;
+  description?: string;
+  features: TemplateFeature[];
+}
+
+const { title, description, features } = Astro.props;
+---
+
+<section id="features" class="border-t border-border py-24 sm:py-32">
+  <Container>
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <div class="lg:sticky lg:top-32 lg:self-start">
+        <h2 class="text-4xl font-medium leading-[1.15] text-foreground sm:text-5xl text-balance">{title}</h2>
+        {description && <p class="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">{description}</p>}
+      </div>
+
+      <div class="space-y-10">
+        {
+          features.map((feature, index) => (
+            <div class="group border-b border-border pb-10 animate-fade-up" style={`animation-delay: ${index * 75}ms;`}>
+              <div class="flex items-baseline gap-6">
+                <span class="text-sm font-medium text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3 class="text-2xl font-medium text-foreground">{feature.title}</h3>
+                  <p class="mt-2 max-w-md leading-relaxed text-muted-foreground">{feature.description}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>
