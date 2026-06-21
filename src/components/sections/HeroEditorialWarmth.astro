@@ -1,6 +1,7 @@
 ---
 import Container from '@/components/layout/Container.astro';
 import Button from '@/components/ui/Button.astro';
+import { asset } from '@/utils/assets';
 
 import type { TemplateStat } from '@/types';
 
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const { title, subtitle, primaryCta, secondaryCta, stats = [] } = Astro.props;
+
+const heroImage = asset('images/agency/hero.jpg');
 ---
 
 <section class="relative border-b border-border py-20 sm:py-28">
@@ -59,7 +62,7 @@ const { title, subtitle, primaryCta, secondaryCta, stats = [] } = Astro.props;
       <div class="animate-fade-up" style="animation-delay: 150ms;">
         <div class="aspect-[4/5] overflow-hidden rounded-sm bg-muted">
           <img
-            src="/images/agency/hero.jpg"
+            src={heroImage}
             alt="Creative studio workspace"
             width="800"
             height="1000"

@@ -1,5 +1,6 @@
 ---
 import Container from '@/components/layout/Container.astro';
+import { asset } from '@/utils/assets';
 
 interface Project {
   title: string;
@@ -13,11 +14,16 @@ interface Props {
 }
 
 const { title, projects = [
-  { title: 'Bloom Rebrand', category: 'Brand Identity', image: '/images/agency/portfolio-1.jpg' },
-  { title: 'Northwind Platform', category: 'Web Design', image: '/images/agency/portfolio-2.jpg' },
-  { title: 'Lumina App', category: 'Product Design', image: '/images/agency/portfolio-3.jpg' },
-  { title: 'Evergreen Campaign', category: 'Art Direction', image: '/images/agency/portfolio-4.jpg' },
+  { title: 'Bloom Rebrand', category: 'Brand Identity', image: 'images/agency/portfolio-1.jpg' },
+  { title: 'Northwind Platform', category: 'Web Design', image: 'images/agency/portfolio-2.jpg' },
+  { title: 'Lumina App', category: 'Product Design', image: 'images/agency/portfolio-3.jpg' },
+  { title: 'Evergreen Campaign', category: 'Art Direction', image: 'images/agency/portfolio-4.jpg' },
 ] } = Astro.props;
+
+const displayProjects = projects.map((project) => ({
+  ...project,
+  image: asset(project.image),
+}));
 ---
 
 <section id="portfolio" class="border-b border-border py-24 sm:py-32">
@@ -29,7 +35,7 @@ const { title, projects = [
 
     <div class="mt-16 grid gap-6 sm:grid-cols-2">
       {
-        projects.map((project, index) => (
+        displayProjects.map((project, index) => (
           <a
             href="#"
             class="group relative aspect-[4/3] overflow-hidden bg-muted animate-fade-up"

@@ -1,6 +1,7 @@
 ---
 import Container from '@/components/layout/Container.astro';
 import Button from '@/components/ui/Button.astro';
+import { asset } from '@/utils/assets';
 
 import type { TemplateStat } from '@/types';
 
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const { title, subtitle, primaryCta, secondaryCta, stats = [] } = Astro.props;
+
+const heroImage = asset('images/saas/hero.jpg');
 ---
 
 <section class="relative overflow-hidden border-b border-border py-20 sm:py-28 lg:py-32">
@@ -58,7 +61,7 @@ const { title, subtitle, primaryCta, secondaryCta, stats = [] } = Astro.props;
         <div class="relative mx-auto max-w-lg lg:max-w-none">
           <div class="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl"></div>
           <img
-            src="/images/saas/hero.jpg"
+            src={heroImage}
             alt="SaaS dashboard preview"
             width="1200"
             height="800"
