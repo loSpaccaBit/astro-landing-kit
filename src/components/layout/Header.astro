@@ -1,16 +1,17 @@
 ---
 import Container from './Container.astro';
+import { route } from '@/utils/routes';
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
   <Container class="flex h-16 items-center justify-between">
-    <a href="/" class="text-lg font-bold tracking-tight" aria-label="Astro Landing Kit home">
+    <a href={route('/')} class="text-lg font-bold tracking-tight" aria-label="Astro Landing Kit home">
       Astro Landing Kit
     </a>
 
     <nav aria-label="Main navigation">
       <ul class="flex items-center gap-6 text-sm font-medium">
-        <li><a href="/" class="text-muted-foreground hover:text-foreground transition-colors">Templates</a></li>
+        <li><a href={route('/')} class="text-muted-foreground hover:text-foreground transition-colors">Templates</a></li>
         <li><a href="https://github.com/loSpaccaBit/astro-landing-kit" class="text-muted-foreground hover:text-foreground transition-colors">GitHub</a></li>
       </ul>
     </nav>

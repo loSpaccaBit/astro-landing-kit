@@ -17,6 +17,7 @@ export default defineConfig({
   site: siteUrl,
   ...(basePath && { base: basePath }),
   output: 'static',
+  trailingSlash: 'always',
 
   vite: {
     plugins: [tailwindcss()],
